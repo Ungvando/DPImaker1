@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>DPI Prep Sheets</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">DPI Prep Sheets</span>
+      </div>
+      <button id="settingsBtn" type="button" class="ghost">Aliases</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="uploadSection">
+      <label class="dropzone" id="dropzone">
+        <input type="file" id="fileInput" accept="application/pdf">
+        <div class="dz-sheet" aria-hidden="true">
+          <div class="dz-line"></div><div class="dz-line short"></div><div class="dz-line hl"></div>
+          <div class="dz-line"></div><div class="dz-line hl short"></div><div class="dz-line"></div>
+        </div>
+        <div class="dz-text">
+          <strong>Drop your daily DPI PDF here</strong>
+          <span>or click to choose the file</span>
+        </div>
+      </label>
+      <p id="status" role="status"></p>
+    </section>
+
+    <section id="reviewSection" hidden>
+      <div class="review-head">
+        <h2>Check each product's tools</h2>
+        <p class="hint">Yellow = found in the instructions · Gray = on every sheet · Navy = from the demo template</p>
+      </div>
+      <div id="entryList"></div>
+    </section>
+  </main>
+
+  <footer id="actionBar" hidden>
+    <span id="pageCount"></span>
+    <button id="printBtn" type="button" class="primary">Save Prep Sheets PDF</button>
+  </footer>
+
+  <dialog id="settingsDialog">
+    <h2>Alias dictionary</h2>
+    <p>When a DPI uses a word the tool doesn't know, teach it here.<br>
+    One per line: <code>phrase in instructions =&gt; SHEET ITEM</code></p>
+    <textarea id="aliasBox" rows="12" spellcheck="false"
+      placeholder="microwave safe dish => BOWL LARGE"></textarea>
+    <div class="dialog-actions">
+      <button id="saveAliases" type="button" class="primary">Save aliases</button>
+      <button id="closeSettings" type="button" class="ghost">Close</button>
+    </div>
+  </dialog>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+/* ── Tokens: taken from the Cart Setup sheet itself ────────────────
+   navy ink of the boxes, real highlighter yellow, plain paper white */
+:root {
+  --navy: #1a3a5c;
+  --navy-soft: #35597f;
+  --ink: #17293c;
+  --paper: #ffffff;
+  --desk: #e9ecef;         /* break-room table gray */
+  --hl: #fde868;           /* highlighter */
+  --hl-soft: #fdf3b3;
+  --muted: #6b7683;
+  --line: #ccd4dc;
+  --radius: 8px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  font-family: system-ui, "Segoe UI", Arial, sans-serif;
+  background: var(--desk);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.45;
+  padding-bottom: 84px; /* room for sticky action bar */
+}
+
+/* ── Top bar ── */
+.topbar { background: var(--navy); color: #fff; }
+.topbar-inner {
+  max-width: 780px; margin: 0 auto; padding: 12px 16px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand-mark {
+  width: 22px; height: 28px; background: #fff; border-radius: 2px;
+  box-shadow: inset 0 5px 0 -2px var(--hl), inset 0 12px 0 -9px var(--navy-soft), inset 0 19px 0 -16px var(--navy-soft);
+}
+.brand-name { font-weight: 700; font-size: 17px; letter-spacing: 0.2px; }
+
+main { max-width: 780px; margin: 0 auto; padding: 20px 16px; }
+
+/* ── Buttons ── */
+button {
+  font: inherit; cursor: pointer; border-radius: var(--radius);
+  border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+  padding: 9px 16px;
+}
+button.primary {
+  background: var(--navy); border-color: var(--navy); color: #fff;
+  font-weight: 600; padding: 11px 22px;
+}
+button.primary:disabled { background: var(--navy-soft); cursor: progress; }
+button.ghost { background: transparent; border-color: rgba(255,255,255,.45); color: #fff; }
+main button.ghost, dialog button.ghost { border-color: var(--line); color: var(--ink); }
+button:focus-visible, select:focus-visible, input:focus-visible {
+  outline: 3px solid var(--hl); outline-offset: 1px;
+}
+
+/* ── Dropzone: a little paper sheet waiting on the desk ── */
+.dropzone {
+  display: flex; align-items: center; gap: 22px;
+  background: var(--paper);
+  border: 2px dashed var(--navy-soft); border-radius: var(--radius);
+  padding: 26px 28px; cursor: pointer;
+}
+.dropzone.dragover { background: var(--hl-soft); border-style: solid; }
+.dropzone input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.dz-sheet {
+  flex: none; width: 58px; padding: 9px 8px;
+  border: 2px solid var(--navy); border-radius: 3px; background: #fff;
+}
+.dz-line { height: 5px; margin: 5px 0; background: var(--line); border-radius: 2px; }
+.dz-line.short { width: 65%; }
+.dz-line.hl { background: var(--hl); }
+.dz-text { display: flex; flex-direction: column; gap: 3px; }
+.dz-text strong { font-size: 17px; color: var(--navy); }
+.dz-text span { color: var(--muted); }
+#status { color: var(--muted); margin: 12px 2px; }
+
+/* ── Review list ── */
+.review-head h2 { margin: 6px 0 2px; font-size: 19px; color: var(--navy); }
+.review-head .hint { margin: 0 0 14px; color: var(--muted); font-size: 13.5px; }
+
+.entry {
+  background: var(--paper);
+  border: 2px solid var(--navy);
+  border-radius: var(--radius);
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+.entry.skipped { border-color: var(--line); }
+.entry.skipped .entry-body { display: none; }
+.entry.skipped .entry-head { background: transparent; }
+.entry.skipped .entry-title { color: var(--muted); font-weight: 500; }
+
+.entry-head {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px;
+  background: linear-gradient(to bottom, #f4f7fa, #eef2f6);
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+}
+.entry.skipped .entry-head { border-bottom: none; }
+.entry-head input[type=checkbox] {
+  width: 20px; height: 20px; accent-color: var(--navy); flex: none;
+}
+.entry-title { font-weight: 700; font-size: 15.5px; }
+.entry-title .item-no { color: var(--navy-soft); font-weight: 600; }
+.badge {
+  margin-left: auto; flex: none;
+  font-size: 12px; font-weight: 700; color: #7a3b00;
+  background: var(--hl); border-radius: 4px; padding: 2px 8px;
+}
+
+.entry-body { padding: 12px 14px 14px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+/* chips as highlighter swipes */
+.chip {
+  position: relative; display: inline-flex; align-items: center; gap: 7px;
+  font-size: 13px; font-weight: 600; color: var(--ink);
+  padding: 4px 10px; border-radius: 3px 10px 4px 9px;
+  background: var(--hl);
+  transform: rotate(-0.4deg);
+}
+.chip:nth-child(even) { transform: rotate(0.5deg); border-radius: 9px 4px 10px 3px; }
+.chip.default { background: #e3e8ee; color: var(--muted); font-weight: 500; }
+.chip.template { background: #fff; box-shadow: inset 0 0 0 2px var(--navy-soft); color: var(--navy); }
+.chip button {
+  border: none; background: none; padding: 0 0 1px; line-height: 1;
+  font-size: 14px; color: inherit; opacity: .55; border-radius: 2px;
+}
+.chip button:hover { opacity: 1; }
+
+.entry-controls { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+select.addTool, select.tmplSel {
+  font: inherit; font-size: 13.5px; padding: 6px 8px;
+  border: 1px solid var(--line); border-radius: 6px; background: #fff; color: var(--ink);
+}
+select.tmplSel { border-color: var(--navy-soft); color: var(--navy); font-weight: 600; }
+
+/* ── Sticky action bar ── */
+#actionBar {
+  position: fixed; left: 0; right: 0; bottom: 0;
+  background: var(--paper); border-top: 2px solid var(--navy);
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 12px 16px;
+}
+#actionBar > * { max-width: 780px; }
+@media (min-width: 812px) {
+  #actionBar { padding-left: calc((100% - 780px)/2 + 16px); padding-right: calc((100% - 780px)/2 + 16px); }
+}
+#pageCount { color: var(--muted); font-size: 14px; }
+
+/* ── Dialog ── */
+dialog {
+  border: 2px solid var(--navy); border-radius: var(--radius);
+  max-width: 560px; width: 92%; padding: 18px;
+}
+dialog::backdrop { background: rgba(23, 41, 60, .45); }
+dialog h2 { margin: 0 0 6px; color: var(--navy); font-size: 18px; }
+dialog p { margin: 0 0 10px; color: var(--muted); font-size: 14px; }
+dialog textarea {
+  width: 100%; font-family: ui-monospace, Consolas, monospace; font-size: 13px;
+  border: 1px solid var(--line); border-radius: 6px; padding: 8px;
+}
+.dialog-actions { display: flex; gap: 10px; margin-top: 12px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .entry { transition: border-color .15s; }
+}

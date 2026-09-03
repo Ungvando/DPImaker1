@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "DPI Prep Sheet Generator",
+  "version": "1.0.0",
+  "description": "Reads a daily DPI PDF, finds the tools in each product's Preparation Instructions, and prints highlighted Cart Setup prep sheets.",
+  "action": {
+    "default_title": "DPI Prep Sheets"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage"],
+  "icons": {
+    "128": "icon128.png"
+  }
+}
