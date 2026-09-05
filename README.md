@@ -10,6 +10,10 @@ tools each product needs already highlighted.
 4. Click "Load unpacked" and select this folder.
 5. The icon appears in your toolbar (pin it if you want).
 
+Step by step tutorial
+1. Click the green code button and download zip to install the zip file.
+
+
 ## Daily use
 1. Click the extension icon — a tab opens.
 2. Choose (or drag in) your daily DPI PDF.
