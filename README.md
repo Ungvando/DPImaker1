@@ -13,6 +13,9 @@ tools each product needs already highlighted.
 Step by step tutorial
 1. Click the green code button and download zip to install the zip file.
 
+   <img width="1439" height="662" alt="1" src="https://github.com/user-attachments/assets/173dc6f6-5c73-4c33-8fb7-3e405a742c6c" />
+
+
 
 ## Daily use
 1. Click the extension icon — a tab opens.
